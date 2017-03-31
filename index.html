@@ -1,0 +1,543 @@
+<meta charset="utf-8" />
+
+<style>
+body { font-family: arial; }
+img { max-width: 250px; max-height: 250px; }
+
+#maintable, #maintable td, #maintable th {
+    border: 1px solid #e0e0e0;
+    border-collapse: collapse;
+}
+
+#maintable th {
+    background: #f0f0f0;
+}
+</style>
+
+<script>
+/**
+ * transpose DOM table
+ *  !! Does not support THEAD/TFOOT, and rowSpan/colSpan.
+ *  !! Multiple tbody will be merged.
+ *  !! TBODY and TR will be replaced, keeps only TD.
+ *  table    <HTMLTableElement>  the reference of DOM table object
+ */
+const transposeTableRowColumn = table => {
+    // dequeue TDs, with transposing
+    const data = [];
+    let iR = 0, iC, currentBody, currentRow, currentCell;
+    while (currentBody = table.firstElementChild) {
+        while (iC = 0, currentRow = currentBody.firstElementChild) {
+            while (currentCell = currentRow.firstElementChild) {
+                if (!data[iC]) {
+                    data[iC] = [];
+                }
+                data[iC++][iR] = currentRow.removeChild(currentCell);
+            }
+            iR++;
+            currentBody.removeChild(currentRow);
+        }
+        table.removeChild(currentBody);
+    }
+
+    // rebuild table
+    const body = document.createElement('tbody');
+    for (const cells of data) {
+        const row = document.createElement('tr');
+        for (const cell of cells) {
+            row.appendChild(cell);
+        }
+        body.appendChild(row);
+    }
+    table.appendChild(body);
+};
+window.addEventListener('load', () => {
+    const $table = document.querySelector('#maintable');
+    const $transposeButton = document.querySelector('#transpose');
+
+    $transposeButton.addEventListener('click', () => {
+        transposeTableRowColumn($table);
+        $table.classList.toggle('transposed');
+    });
+
+    // init
+    transposeTableRowColumn($table);
+});
+</script>
+
+<div>
+    &copy; project-pp.com
+    <br />
+    <button id="transpose">Transpose table</button>
+</div>
+
+<table id="maintable">
+<!-- header -->
+<tr>
+    <th>Name</th>
+    <th>Appearance</th>
+    <th>Unit cost (USD)</th>
+    
+    <th>Core device</th>
+    <th>Bluetooth version</th>
+    <th>Supported profile with the default firmware</th>
+    <th>Supported role</th>
+
+    <th>Vdd</th>
+    <th>MCU Flash size</th>
+    <th>Pinout</th>
+    <th>Schematic</th>
+    <th>Layout</th>
+    <th>Size(mm)</th>
+
+    <th>Breakout version</th>
+    <th>Name</th>
+    <th>Appearance</th>
+    <th>Pinout</th>
+    <th>Unit cost (USD)</th>
+
+    <th>Manufacture</th>
+    <th>Product page</th>
+    <th>Datasheet</th>
+    <th>Resources</th>
+
+    <th>Links</th>
+    <th>Note</th>
+</tr>
+
+<!-- HM-10 -->
+<tr>
+    <th>HM-10(HM-10S)</th>
+    <td>
+        <img src="HM-10/appearance.png" />
+        <img src="HM-10/appearance.official.png" />
+    </td>
+    <td>$3.40-</td>
+
+    <td>Texus Instruments <a href="http://www.ti.com/product/cc2540">CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
+    <td>BLE(4.0)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.5-3.7V</td>
+    <td>256KB</td>
+    <td>
+        <img src="HM-10/pinout.png" /><br />
+        (<a href="https://github.com/nickswalker/ble-dev-kit/wiki/HM-10-Pinout">nickswalker/ble-dev-kit</a>)
+    </td>
+    <td>
+        <img src="HM-10/schematic.png" /><br />
+        (bluetooth40_en.pdf#page12)
+    </td>
+    <td>
+        <img src="HM-10/layout.png" /><br />
+        (bluetooth40_en.pdf#page13)
+    </td>
+    <td>27 * 13 * 2.2</td>
+
+    <td>Available</td>
+    <td>HM-10 with breakout board "Bluetooth-4.0"</td>
+    <td><img src="HM-10/breakout.appearance.jpg" /></td>
+    <td><img src="HM-10/breakout.pinout.jpg" /></td>
+    <td>4.60-, board only is 1.30</td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-10/bluetooth40_en/bluetooth40_en.pdf">bluetooth40_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth40_en.zip">Official Document</a>,
+        <a href="HM-10/bluetooth40_en.zip">bluetooth40_en.zip</a>
+    </td>
+
+    <td>
+        <ul>
+            <li><a href="http://blog.blecentral.com/2015/05/05/hm-10-peripheral/">HM-10 BLE Module</a></li>
+            <li><a href="http://fab.cba.mit.edu/classes/863.15/doc/tutorials/programming/bluetooth.html">HtMaA: Bluetooth Tutorial</a></li>
+            <li><a href="http://www.hangar42.nl/hm10">How to use the HM10: Connect your Arduino to an iPhone with Bluetooth | Hangar42</a></li>
+            <li><a href="http://techienoise.com/upgrading-firmware-to-hm-10-cc2541-ble-4-0/">Upgrading Firmware to HM-10 CC2541 BLE 4.0 - TechieNoise</a></li>
+            <li><a href="https://geekhack.org/index.php?topic=62236.0">Turning HM-10, HM-11 into Bluetooth HID modules</a></li>
+        </ul>
+    </td>
+    <td>
+        HM-10 is one of the most famous BLE module for DIY.
+        Core device is TI's SoC CC2540/2541 (both type is available), with SPP firmware.
+        Also you can re-programming/write your custom firmware into MCU,
+        for more detail: [CC254X development].<br />
+        <img src="HM-10/fake.jpg" /><br />
+        (from blog.blecentral.com) there's some types of fake/clone model for HM-10.
+        If you don't want to catch them, check appearance and also confirm to the seller before you raise an order.
+        According to the document bluetooth40_en.pdf,
+        <blockquote><p>
+            A lot of fake modules in the market Such as HC-08 and CC41-A is the copycat company copied from our products,
+            If you buy a fake, please apply for a refund guarantee your legitimate rights and interests.
+        </p></blockquote>
+        <hr />
+        There are many types of BT modules comes from Huamao Technology, now mainly available model is HM-10, HM-11.
+        The smaller number model HM-N (N<=9) is maybe discontinued (supports only Bluetooth V2.1 (+EDR)),
+        and the larger number model HM-N (N>=12) is newer item but a bit expensive or poor availability,
+        also fewer information on the web. (HM-14 is no longer available. HM-15 is USB dongle.)
+    </td>
+</tr>
+
+<!-- HM-11 -->
+<tr>
+    <th>HM-11</th>
+    <td>
+        <img src="HM-11/appearance.jpg" />
+        <img src="HM-11/appearance.official.png" />
+    </td>
+    <td>$3.88-</td>
+
+    <td>Texus Instruments <a href="http://www.ti.com/product/cc2540">CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
+    <td>BLE(4.0)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.5-3.7V</td>
+    <td>256KB</td>
+    <td>
+        <img src="HM-11/pinout.png" />
+    </td>
+    <td>
+        <img src="HM-11/schematic.png" /><br />
+        (<a href="https://upverter.com/unsalted/b88bd7f58f06033b/HM-11-Breakout/">HM-11 Breakout by unsalted b88bd7f58f06033b - Upverter</a>)
+    </td>
+    <td>
+        <img src="HM-11/layout.png" /><br />
+        (bluetooth40_en.pdf#page15-16)
+    </td>
+    <td>18 * 13 * 2.2</td>
+
+    <td>Poor availability</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>board only is 1.30</td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-10/bluetooth40_en/bluetooth40_en.pdf">bluetooth40_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth40_en.zip">Official Document</a>,
+        <a href="HM-10/bluetooth40_en.zip">bluetooth40_en.zip</a>
+    </td>
+
+    <td>
+        <ul>
+            <li><a href="http://wiki.seeed.cc/Bluetooth_V4.0_HM_11_BLE_Module/">Bluetooth V4.0 HM-11 BLE Module - Seeed Wiki</a></li>
+            <li><a href="https://platis.solutions/blog/2015/06/11/breakout-board-hm-11-ble/">» Breakout for the HM-11 BLE module</a></li>
+        </ul>
+        also you can refer HM-10's information almost as it is.
+    </td>
+    <td>
+        HM-11 is a function conmatible small version of HM-10. Core device is also CC2540/2541, and some GPIO pin was reduced.<br />
+        <img src="HM-11/fake.png" /><br />
+        Also there's various fake/clone model for HM-11, some of them are very similiar appearance, I couldn't distinguish them.
+        If you have a information, pls tell me!<br />
+        <strong>UPDATED</strong>: the most right module seemed to be provided by <a href="https://www.digikey.com/catalog/en/partgroup/bluetooth-v4-0-hm-11-ble-module/60471">Seeed Technology Co., Ltd as "317030001 Bluetooth V4.0 HM-11 BLE Module"</a>, at USD 12.90
+    </td>
+</tr>
+
+<!-- HM-12 -->
+<tr>
+    <th>HM-12(HM-12S)</th>
+    <td>
+        <img src="HM-12/appearance.png" />
+        <img src="HM-12/appearance.official.png" />
+    </td>
+    <td>$6.95-</td>
+
+    <td>
+        <a href="http://www.nuvoton.com/hq/products/microcontrollers/arm-cortex-m0-mcus/m051-base-series/m0516zdn/?__locale=en">Nuvoton M0516ZDN</a>,
+        <a href="http://www.csr.com/ja/products/bluecore-csr8510-a10-wlcsp">CSR BlueCore CSR8510 A10 WLCSP</a>
+    </td>
+
+    <td>BLE + EDR (dual mode)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.5-3.9V</td>
+    <td>64KB</td>
+
+    <td>same as HM-10, but chip is not CS254X.</td>
+    <td>same as HM-10, but chip is not CS254X.</td>
+    <td>same as HM-10.</td>
+    <td>27 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-10.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-12/bluetoothdual_en/bluetoothdual_en.pdf">bluetoothdual_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetoothdual_en.zip">Official Document</a>,
+        <a href="HM-12/bluetoothdual_en.zip">bluetoothdual_en.zip</a>
+    </td>
+
+    <td>
+        <ul>
+            <li><a href="http://www.guillier.org/blog/2015/02/bluetooth-low-energy-with-module-hm-12/">Bluetooth Low Energy with module HM-12</a></li>
+        </ul>
+    </td>
+    <td>
+        HM-12 is dual-mode (BLE+EDR) BT module, using CSR8510 chipset.
+        Pinout is compatible for HM-10 when use for SPP module, but chip is not CC2541.
+        I don't know about MUC and chipset. If you have an information, pls share with me!
+        <br />
+        <img src="HM-12/othertypes.png" /><br />
+        Some seller has an another type of HM-12: Mounted M0516ZBN or NUC029ZA as MCU.
+        I don't know which MCU is the original. But if you will not change the firmware, that's not a problem.
+        Another one use white/silver CSR(?) chip, the most available type.
+        PCB layout is almost the same, assumed they're clone or Lot was changed.<br />
+        <strong>UPDATED</strong>: the white chip is maybe <a href="http://www.csr.com/ja/products/bluecore-csr8811-wlcsp">BlueCore CSR8811 WLCSP</a>, new model of CSR8510,
+        is supported dual-mode, <em>Bluetooth v4.1!</em>
+
+    </td>
+</tr>
+
+<!-- HM-13 -->
+<tr>
+    <th>HM-13</th>
+    <td>
+        <img src="HM-13/appearance.jpg" />
+        <img src="HM-13/appearance.official.png" />
+    </td>
+    <td>$6.80-</td>
+
+    <td>
+        <a href="http://www.nuvoton.com/hq/products/microcontrollers/arm-cortex-m0-mcus/m051-base-series/m0516zdn/?__locale=en">Nuvoton M0516ZDN</a>,
+        <a href="http://www.csr.com/ja/products/bluecore-csr8510-a10-wlcsp">CSR BlueCore CSR8510 A10 WLCSP</a>
+    </td>
+
+    <td>BLE + EDR (dual mode)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.5-3.9V</td>
+    <td>64KB</td>
+
+    <td>same as HM-11, but chip is not CS254X.</td>
+    <td>same as HM-11, but chip is not CS254X.</td>
+    <td>same as HM-11.</td>
+    <td>18 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-11.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-12/bluetoothdual_en/bluetoothdual_en.pdf">bluetoothdual_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetoothdual_en.zip">Official Document</a>,
+        <a href="HM-12/bluetoothdual_en.zip">bluetoothdual_en.zip</a>
+    </td>
+
+    <td>
+        <ul>
+            <li><a href="https://github.com/Seeed-Studio/HM_13_SW">Seeed-Studio/HM_13_SW</a></li>
+            <li><a href="http://www.sunduino.pl/wordpress/ble-z-arm-na-pokladzie-hm-13/">BLE z ARM na pokładzie — HM-13 | SunDuino – Nowy wymiar elektroniki</a></li>
+        </ul>
+    </td>
+    <td>
+        HM-13 is a function conmatible small version of HM-12, like HM-10 vs HM-11.<br />
+        <img src="HM-13/othertypes.png" /><br />
+        Say again again and again, there's some clone/fake model.
+        They uses M0516ZBN or NUC029ZA as MCU, and also white chip was used.
+    </td>
+</tr>
+
+<!-- HM-16 -->
+<tr>
+    <th>HM-16</th>
+    <td>
+        <img src="HM-16/appearance.png" />
+        <img src="HM-16/appearance.official.png" />
+    </td>
+    <td>$5.89-</td>
+
+    <td><a href="http://www.cypress.com/part/cybl10162-56lqxi">Cypress CYBL10162-56LQXI</a></td>
+    <td>BLE(v4.1)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.1-5.5V</td>
+    <td>128KB</td>
+
+    <td><img src="HM-16/pinout.png" /></td>
+    <td><img src="HM-16/schematic.png" /><br />(bluetooth41_en.pdf#page11)</td>
+    <td>same as HM-10.</td>
+    <td>27 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-10.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-16/bluetooth41_en/bluetooth41_en.pdf">bluetooth41_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth41_en.zip">Official Document</a>,
+        <a href="HM-16/bluetooth41_en.zip">bluetooth41_en.zip</a>
+    </td>
+
+    <td></td>
+    <td>
+        HM-16 is an updated version of HM-10. CC254x was replaced with Cypress Programmable Radio on Chip, CYBL10162-56LQXI.
+        Protocol version 4.1 supported, power consumption reduced.
+        Pinout 5,6,31 is connected to Pin 27,26,5 of PRoC, which is SWDCLK/SWDIO/XRES; SWD programming/debug port.
+        If you have/write a custom firmware, maybe download it via this port.
+        The clone/fake model does not distributed at this moment.
+    </td>
+</tr>
+
+<!-- HM-17 -->
+<tr>
+    <th>HM-17</th>
+    <td>
+        <img src="HM-17/appearance.png" />
+        <img src="HM-17/appearance.official.png" />
+    </td>
+    <td>$6.20-</td>
+
+    <td><a href="http://www.cypress.com/part/cybl10162-56lqxi">Cypress CYBL10162-56LQXI</a></td>
+    <td>BLE(v4.1)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.1-5.5V</td>
+    <td>128KB</td>
+
+    <td><img src="HM-17/pinout.png" /></td>
+    <td><img src="HM-17/schematic.png" /><br />(bluetooth41_en.pdf#page14)</td>
+    <td>same as HM-11.</td>
+    <td>18 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-11.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-16/bluetooth41_en/bluetooth41_en.pdf">bluetooth41_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth41_en.zip">Official Document</a>,
+        <a href="HM-16/bluetooth41_en.zip">bluetooth41_en.zip</a>
+    </td>
+
+    <td></td>
+    <td>
+        HM-17 is a function conmatible small version of HM-16, like HM-10 vs HM-11.
+        The clone/fake model does not distributed at this moment.
+    </td>
+</tr>
+
+<!-- HM-18 -->
+<tr>
+    <th>HM-18</th>
+    <td>
+        <img src="HM-18/appearance.png" />
+        <img src="HM-18/appearance.official.png" />
+    </td>
+    <td>poor availability</td>
+
+    <td><a href="http://www.cypress.com/part/cybl10573-56lqxi">Cypress CYBL10573-56LQXI</a>...?</td>
+    <td>BLE(v4.2)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.1-5.5V</td>
+    <td>256KB</td>
+
+    <td>same as HM-16</td>
+    <td>same as HM-16</td>
+    <td>same as HM-10</td>
+    <td>27 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-10.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-18/bluetooth42_en/bluetooth42_en.pdf">bluetooth42_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth42_en.zip">Official Document</a>,
+        <a href="HM-18/bluetooth42_en.zip">bluetooth42_en.zip</a>
+    </td>
+
+    <td></td>
+    <td>
+        The latest model of HM-* Bluetooth LE modules by Huamao technology; updated version of HM-16, with supporting Bluetooth v4.2.
+        At this moment this model is not distributed widely, a picked-up image is not found on the internet.
+        According to bluetooth42_en.pdf, uses Cypress chip, and some parameter may comes from it.
+        So I looked up mouser, 3 chips matched. CY8C4248LQI-BL483 and CY8C4128LQI-BL483 is PSoC with BLE,
+        the difference between them is "Family within Architecture" and "Speed Grade".
+        But HM-16 uses PRoC, not PSoC, so the last chip; CYBL10573-56LQXI, PRoC with BLE v4.2 is maybe correct.
+        The SWD port of CYBL10573-56LQXI is compatible pin assign with CYBL10162-56LQXI(HM-16), (but two PSoC is also matchd...).
+        If you have an information, pls share with me!!!
+    </td>
+</tr>
+
+<!-- HM-19 -->
+<tr>
+    <th>HM-19</th>
+    <td>
+        <img src="HM-19/appearance.png" />
+        <img src="HM-19/appearance.official.png" />
+    </td>
+    <td>$8.00-</td>
+
+    <td><a href="http://www.cypress.com/part/cybl10573-56lqxi">Cypress CYBL10573-56LQXI</a>...?</td>
+    <td>BLE(v4.2)</td>
+    <td>SPP</td>
+    <td>Master/Slave</td>
+
+    <td>2.1-5.5V</td>
+    <td>256KB</td>
+
+    <td>same as HM-17</td>
+    <td>same as HM-17</td>
+    <td>same as HM-11</td>
+    <td>18 * 13 * 2.2</td>
+
+    <td>Not found, but can diverte the breakout board for HM-11.</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+    <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+    <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
+    <td><a href="HM-18/bluetooth42_en/bluetooth42_en.pdf">bluetooth42_en.pdf</a></td>
+    <td>
+        <a href="http://www.jnhuamao.cn/bluetooth42_en.zip">Official Document</a>,
+        <a href="HM-18/bluetooth42_en.zip">bluetooth42_en.zip</a>
+    </td>
+
+    <td></td>
+    <td>
+        HM-19 is a function conmatible small version of HM-18, like HM-10 vs HM-11.
+        The clone/fake model does not distributed at this moment.
+    </td>
+</tr>
+</table>
+
+<h2>Note:</h2>
+<ol>
+    <li>The price was checked on aliexpress.com at the last update time.</li>
+    <li>If you have a question or problem with this page, contact via github issue.</li>
+    <li>If you have some update/new information and would share with us, raise pull-request via github. thanks!</li>
+</ol>
