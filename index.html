@@ -10,6 +10,10 @@
 
         img {
             max-width: 250px; max-height: 250px;
+            cursor: pointer;
+        }
+        img.zoom {
+            max-width: 800px; max-height: 800px;
         }
 
         #maintable, #maintable td, #maintable th {
@@ -70,6 +74,11 @@
             // init
             transposeTableRowColumn($table);
         });
+        window.addEventListener('click', e => {
+            if (e.target.nodeName === 'IMG') {
+                e.target.classList.toggle('zoom');
+            }
+        });
         </script>
     </head>
     <body>
@@ -121,10 +130,10 @@
                 </td>
                 <td>$3.40-</td>
 
-                <td>Texus Instruments <a href="http://www.ti.com/product/cc2540">CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
+                <td><a href="http://www.ti.com/product/cc2540">Texus Instruments CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
                 <td>BLE(4.0)</td>
                 <td>SPP</td>
-                <td>Master/Slave</td>
+                <td>Master/Slave (AT+ROLE)</td>
 
                 <td>2.5-3.7V</td>
                 <td>256KB</td>
@@ -183,6 +192,7 @@
                     The smaller number model HM-N (N<=9) is maybe discontinued (supports only Bluetooth V2.1 (+EDR)),
                     and the larger number model HM-N (N>=12) is newer item but a bit expensive or poor availability,
                     also fewer information on the web. (HM-14 is no longer available. HM-15 is USB dongle.)
+                    The factory firmware AT command instruction is basically compatible with each other module.
                 </td>
             </tr>
 
@@ -195,10 +205,10 @@
                 </td>
                 <td>$3.88-</td>
 
-                <td>Texus Instruments <a href="http://www.ti.com/product/cc2540">CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
+                <td><a href="http://www.ti.com/product/cc2540">Texus Instruments CC2540</a> or <a href="http://www.ti.com/product/cc2541">CC2541</a></td>
                 <td>BLE(4.0)</td>
                 <td>SPP</td>
-                <td>Master/Slave</td>
+                <td>Master/Slave (AT+ROLE)</td>
 
                 <td>2.5-3.7V</td>
                 <td>256KB</td>
@@ -526,7 +536,7 @@
                 <td></td>
                 <td></td>
 
-                <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD./济南华茂科技有限公司</a></td>
+                <td><a href="http://www.jnhuamao.cn/">Jinan Huamao Technology CO,.LTD. / 济南华茂科技有限公司</a></td>
                 <td><a href="http://www.jnhuamao.cn/bluetooth.asp?ID=1">Huamao technology Co,. Ltd. > Bluetooth Product</a></td>
                 <td><a href="HM-18/bluetooth42_en/bluetooth42_en.pdf">bluetooth42_en.pdf</a></td>
                 <td>
