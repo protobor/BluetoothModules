@@ -876,8 +876,11 @@
                 <td><img src="HC-07/appearance.jpg" /></td>
                 <td>poor availability</td>
 
-                <td><a href="https://www.digikey.com/product-detail/en/qualcomm/BC41C671A-IPK-E4/BC41C671A-IPK-E4CT-ND/1561245">CSR BC41C671A</a></td>
-                <td>2.0 + EDR</td>
+                <td>
+                    CSR <a href="https://www.digikey.com/product-detail/en/qualcomm/BC31A223A-IVN-E4/BC31A223A-IVN-E4CT-ND/1219151">BC31A223A</a> or
+                    <a href="https://www.digikey.com/product-detail/en/qualcomm/BC41C671A-IPK-E4/BC41C671A-IPK-E4CT-ND/1561245">BC41C671A</a>
+                </td>
+                <td>2.0...?</td>
                 <td>SPP</td>
                 <td>Slave or Master...? (see note)</td>
 
@@ -888,7 +891,7 @@
                 <td>same as HC-06</td>
                 <td>same as HC-06</td>
 
-                <td></td>
+                <td>Not found, but can diverte the breakout board for HC-06.</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -906,77 +909,96 @@
                     </ul>
                 </td>
                 <td>
-                    HC-07 is alternative of HC-06. I couldn't find the datasheet or the defail information.
+                    HC-07 is alternative module for HC-06, the AT command is totally compatible.
+                    I couldn't find the datasheet or the defail information. And now HC-07 went to poor availability, I couldn't find good price to buy.
+                    Some of modules named HC-07 uses CSR BC41C671A. BC31A223A is BT v1.1/v1.2, BC41C671A is v2.0, assumed it was revision change.
                 </td>
             </tr>
 
             <!-- HC-08 -->
             <tr>
-                <th>HC-08</th>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
+                <th>HC-08 (v2.3)</th>
+                <td><img src="HC-08/appearance.png" /></td>
+                <td>$2.73-</td>
 
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
+                <td><a href="http://www.ti.com/product/cc2540">Texus Instruments CC2540</a></td>
+                <td>BLE(4.0)</td>
+                <td>SPP</td>
+                <td>Master/Slave (AT+ROLE)</td>
 
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
+                <td>2.0 - 3.6V</td>
+                <td>256KB</td>
+                <td><img src="HC-08/pinout.png" /><br />(2015121885146101.pdf#page2)</td>
+                <td><img src="HC-08/schematic.png" /><br />(2015121885146101.pdf#page12)</td>
+                <td><img src="HC-08/layout.png" /><br />(2015121885146101.pdf#page1)</td>
+                <td>26.9 * 13.0</td>
 
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
+                <td>Not found, but can diverte the breakout board for HC-05.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
 
                 <td><a href="http://www.wavesen.com/">Guangzhou HC Information Technology Co.,Ltd. / 广州汇承信息科技有限公司</a></td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
+                <td><a href="http://www.wavesen.com/probig.asp?id=27">HC-08 4.0串口模块/BLE低功耗cc2540/主从一体/TTL接口</a></td>
+                <td>
+                    <ul>
+                        <li><a href="HC-08/2015121885146101.pdf">HC-08 BLUETOOTH UART COMMUNICATION MODULE V2.0 USER MANUAL</a></li>
+                        <li><a href="HC-08/2016510120101101.pdf">HC-08 蓝牙串口通信模块 用户手册 V2.3</a></li>
+                        <li><a href="HC-08/2016726165447101.pdf">HC-08 蓝牙串口通信模块 用户手册 V2.4</a></li>
+                    </ul>
+                </td>
+                <td><a href="http://www.wavesen.com/download.asp">下载中心 蓝牙模块 蓝牙串口模块 无线模块 HC蓝牙模块 广州汇 承信息科技有限公司</a></td>
 
-                <td>Links</td>
-                <td>Note</td>
+                <td></td>
+                <td>
+                    HC-08 is BLE(v4.0) supported version of HC-05, by using TI CC2540.
+                    There's some minor version v2.0-v2.4, maybe the firmware is also changed.
+                    The hardware pin layout was changed on v2.4, see "HC-08 蓝牙串口通信模块 用户手册 V2.4".
+                    The AT command is similiar to HC-05, but some of them is not implemented (e.g. AT+CLASS, AT+PSWD).
+                    The pinout is also similiar to HC-05 or HM-10.
+                </td>
             </tr>
 
 
             <!-- HC-09 -->
             <tr>
                 <th>HC-09</th>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
+                <td><img src="HC-09/appearance.jpg" /></td>
+                <td>poor availability</td>
 
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
+                <td>CC2582 or HL1009</td>
+                <td>2.0 + EDR</td>
+                <td>SPP</td>
+                <td>Slave</td>
 
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
+                <td>3.1 - 4.2V</td>
+                <td></td>
+                <td><img src="HC-09/pinout.png" /><br />(2015121885215101.pdf#page9)</td>
+                <td><img src="HC-09/schematic.png" /><br />(2015121885215101.pdf#page9)</td>
+                <td>same as HC-06</td>
+                <td>same as HC-06</td>
 
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
+                <td>Not found, but can diverte the breakout board for HC-06.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
 
                 <td><a href="http://www.wavesen.com/">Guangzhou HC Information Technology Co.,Ltd. / 广州汇承信息科技有限公司</a></td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
+                <td></td>
+                <td><a href="HC-09/2015121885215101.pdf">Datasheet(CN)</a></td>
+                <td><a href="http://www.wavesen.com/download.asp">下载中心 蓝牙模块 蓝牙串口模块 无线模块 HC蓝牙模块 广州汇 承信息科技有限公司</a></td>
 
-                <td>Links</td>
-                <td>Note</td>
+                <td></td>
+                <td>
+                    HC-09 is fully compatible with HC-06, so it is slave-only module.
+                    The core device is printed CC2582, or another is HL1009. I couldn't find any information for them.
+                </td>
             </tr>
-
+        </tbody>
+    </table>
+<div style="display: none;">
             <!-- BT05-A -->
             <tr>
                 <td>BT05-A</td>
@@ -1802,39 +1824,6 @@
                 <td>Note</td>
             </tr>
 
-            <!-- HC-07 -->
-            <tr>
-                <td>HC-07</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
             <!-- ESP32-T -->
             <tr>
                 <td>ESP32-T</td>
@@ -2131,7 +2120,7 @@
                 <td>Links</td>
                 <td>Note</td>
             </tr>
-        </table>
+</div>
 
         <h2>Note:</h2>
         <ol>
