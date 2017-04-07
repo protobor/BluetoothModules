@@ -559,7 +559,7 @@
             
             <!-- JDY-08 -->
             <tr>
-                <th>JDY-08 (JDY-08蓝牙透传模块)</th>
+                <th>JDY-08</th>
                 <td><img src="JDY-08/appearance.jpg" /></td>
                 <td>$1.58-</td>
                 
@@ -616,7 +616,7 @@
 
             <!-- JDY-10 -->
             <tr>
-                <th>JDY-10 (JDY–10蓝牙4.0 BLE模块)</th>
+                <th>JDY-10</th>
                 <td><img src="JDY-10/appearance.jpg" /></td>
                 <td>$1.39-</td>
 
@@ -660,6 +660,378 @@
                     <strong>TL;DR</strong>: As compare with JDY-08, MCU is more powerful, however the firmware function is poor,
                     the document or information is fewer.
                 </td>
+            </tr>
+
+            <!-- BC04-B -->
+            <tr>
+                <th>DX-BT04 / BC04-B</th>
+                <td><img src="DX-BT04/appearance.png" /></td>
+                <td>$3.15-</td>
+
+                <td><a href="http://www.csr.com/ja/products/bluecore4-ext">CSR BlueCore4-Ext BC417143B</a></td>
+                <td>2.1 + EDR</td>
+                <td>SPP</td>
+                <td>Master/Slave (AT+ROLE)</td>
+
+                <td>2.2 - 4.2V</td>
+                <td>8Mbit (<a href="http://www.esmt.com.tw/english/main_products.asp">EN29LV800CB-70BIP</a>)</td>
+                <td>see schematic</td>
+                <td><img src="DX-BT04/schematic.png" /><br />(BC04-B清兩庁翠室宝返過2.45.pdf#page5)</td>
+                <td><img src="DX-BT04/layout.png" /><br />(BC04-B清兩庁翠室宝返過2.45.pdf#page7)</td>
+                <td>26.7 * 13.0 * 2.0</td>
+
+                <td>Not found, but can diverte the breakout board for HC-05.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td><a href="https://world.taobao.com/item/42838144252.htm">BC04-B主从一体 蓝牙串口适配器 蓝牙串口模块 蓝牙转串口模块-淘宝网全球站</a></td>
+                <td>
+                    <ul>
+                        <li><a href="DX-BT04/蓝牙串口+BC04-B资料/清兩堪笥 BC04-B彿創/BC04-B清兩庁翠室宝返過2.45.pdf">Datasheet(CN)</a></li>
+                        <li><a href="DX-BT04/蓝牙串口+BC04-B资料/清兩堪笥 BC04-B彿創/BC04-B_AT峺綜鹿_V2.45.pdf">AT Command Reference(CN)</a></li>
+                    </ul>
+                </td>
+                <td><a href="http://pan.baidu.com/share/link?shareid=1640609135&uk=1443308536">蓝牙串口 BC04-B资料.zip_免费高速下载|百度网盘-分享无限制</a></td>
+
+                <td>
+                    <ul>
+                        <li><a href="http://www.electrodragon.com/w/BC04">BC04 - ElectroDragon</a></li>
+                    </ul>
+                </td>
+                <td>
+                    The modules called as DX-BT04 or BC-04, is one of the clone model, where BC04-A is for HC-06, BC04-B is for HC-05.
+                    The difference between BC04-B and HC-05 or HC-06 is below:
+                    <table>
+                        <tbody>
+                            <tr><th>Feature</th><th>BC04-B</th><th>HC-05</th><th>HC-06</th></tr>
+                            <tr><th>Software master and slave settings</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><th>Hardware master and slave settings</th><td>Yes</td><td>No</td><td>No</td></tr>
+                            <tr><th>Ultra low power consumption</th><td>2-10mA</td><td>30-40mA</td><td>30-40mA</td></tr>
+                            <tr><th>Intelligent AT command system</th><td>Yes</td><td>No</td><td>No</td></tr>
+                            <tr><th>Common AT collection</th><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                            <tr><th>Support help instructions</th><td>Yes</td><td>No</td><td>No</td></tr>
+                            <tr><th>Product level</th><td>military</td><td>industrial</td><td>consumer</td></tr>
+                            <tr><th>Support software development</th><td>Yes</td><td>No</td><td>No</td></tr>
+                            <tr><th>Support the uplink instruction</th><td>Yes</td><td>No</td><td>No</td></tr>
+                        </tbody>
+                    </table>
+                    (from <a href="DX-BT04/compare_with_hc_series.jpg">BC04-B与其他同类产品的区别</a>)<br />
+                    Hardware Master/Slave selection is remarkable. According to the datasheet:
+                    <ol>
+                        <li>
+                            When Pin#27 PIO(4) is Low or Hi-Z(N/C), Hardware-selection mode. Else Hi(3.3V),
+                            the mode would be selected by software (AT+ROLE).
+                        </li>
+                        <li>
+                            When Hardware-selection mode was enabled, the role was selected by Pin#28 PIO(5).
+                            Set Hi(3.3V) is Master, Lo or Hi-Z(N/C) is Slave.
+                        </li>
+                        <li>
+                            Under hardware-selection mode, AT+ROLE is no effect, does not change the current selected role.
+                            This command sets the mode to take effect on the next power-up when the master-slave mode is set in the software.
+                        </li>
+                    </ol>
+                    I don't understand for an another features.<br />
+                    The hardware is actually the same as HC-05/06. It is named <a href="http://www.bolutek.com/ProductController/findDetail.do?id=49">BLK-MD-BC04-B</a> from 深圳市博陆科电子科技有限公司/Shenzhen Bolutek Technology Co.,Ltd.
+                    BC04-B's firmware is maybe the factory firmware of BLK-MD-BC04-B.
+                </td>
+            </tr>
+
+            <!-- DX-BT04-A -->
+            <tr>
+                <th>DX-BT04-A / SPP-CA</th>
+                <td>
+                    <img src="DX-BT04-A/appearance.BK3231.jpg" /><br />
+                    <img src="DX-BT04-A/appearance.BK3231Q.png" />
+                </td>
+                <td>$1.62-</td>
+
+                <td><a href="http://www.bekencorp.com/en/Botong.Asp?Parent_id=2&Class_id=8&Id=85">Beken Corporation BK3231 or BK3231Q</a> or CT2280</td>
+                <td>2.1 + EDR</td>
+                <td>SPP</td>
+                <td>Master/Slave (AT+ROLE)</td>
+
+                <td>2.2 - 4.2V</td>
+                <td>256KB</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+                <td>Available</td>
+                <td>BT06 or other name</td>
+                <td><img src="DX-BT04-A/breakout.appearance.jpg" /><br />(from <a href="http://www.martyncurrey.com/bluetooth-modules/">Bluetooth Modules | Martyn Currey</a>)</td>
+                <td>see appearance</td>
+                <td>$1.90-</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>
+                    <ul>
+                        <li><a href="https://world.taobao.com/item/41908285817.htm">蓝牙串口模块 无线透传数据模组 51单片机 SPP-CA 代替HC-06-淘宝网全球站</a></li>
+                        <li><a href="https://world.taobao.com/item/528712531278.htm">BT06蓝牙串口模块 无线透传数据模组 51单片机 兼容HC-06-淘宝网全球站</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="BT04-A/SPP-C/SPP-C/SPP-CA/清兩庁翠室宝返過v1.0.pdf">Datasheet(CN)</a></li>
+                        <li><a href="BT04-A/SPP-C/SPP-C/SPP-CA/SPP-CA清兩庁翠AT峺綜鹿v1.0.pdf">AT Command Reference(CN)</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="http://pan.baidu.com/s/1c0D3bdm">SPP-C.zip_免费高速下载|百度网盘-分享无限制</a></li>
+                        <li><a href="https://pan.baidu.com/s/1kVPFden">BT06带底板资料.zip_免费高速下载|百度网盘-分享无限制</a></li>
+                    </ul>
+                </td>
+
+                <td></td>
+                <td>
+                    BT04-A is one of the clone model for HC-05.
+                    There's two types of base module SPP-C or SPP-CA from 深圳市博陆科电子科技有限公司/Shenzhen Bolutek Technology Co.,Ltd.
+                    One of them has a smaller chip, another has a larger chip. The small one is BK3231, the large one is BK3231Q or CT2280.
+                    The difference between BK3231 and BK3231Q is only package formfactor. I couldn't find any information about CT2280.
+                    The seller was described BK3231Q as SPP-C, and BK3231 as SPP-CA, but sometimes be confused, and I'm also confusing.
+                    There's various firmware version, I didn't correct them at this time.
+                </td>
+            </tr>
+
+            <!-- DX-BT05 -->
+            <tr>
+                <th>DX-BT05 / AT-05</th>
+                <td><img src="DX-BT05/appearance.png" /></td>
+                <td>$2.14-</td>
+
+                <td><a href="http://www.ti.com/product/cc2541">Texus Instruments CC2541</a></td>
+                <td>BLE(4.0)</td>
+                <td>SPP</td>
+                <td>Master/Slave (AT+ROLE)</td>
+
+                <td>same as HM-10</td>
+                <td>same as HM-10</td>
+                <td>same as HM-10</td>
+                <td>same as HM-10</td>
+                <td>same as HM-10</td>
+                <td>same as HM-10</td>
+
+                <td>Available</td>
+                <td>BT05 / AT-09</td>
+                <td><img src="DX-BT05/breakout.appearance.jpg" /><br />(from <a href="http://www.martyncurrey.com/bluetooth-modules/">Bluetooth Modules | Martyn Currey</a>)</td>
+                <td>see appearance</td>
+                <td>$2.48-</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>
+                    <ul>
+                        <li><a href="https://world.taobao.com/item/520352368319.htm">低功耗 BLE蓝牙4.0串口模块cc2540 cc2541 数据透传 iBeacon模块-淘宝网全球站</a></li>
+                        <li><a href="https://world.taobao.com/item/43164497665.htm">4.0蓝牙模块 ble 串口 BLE CC2540 CC2541带底板蓝牙 iBeacon模块-淘宝网全球站</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="DX-BT05/MLT-BT05+4.0资料(1)/资料/模块手册.pdf">Datasheet(CN)</a></li>
+                        <li><a href="DX-BT05/MLT-BT05+4.0资料(1)/资料/AT指令集.pdf">AT Command Reference(CN)</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="https://pan.baidu.com/s/1eRK1Yls">MLT-BT05 4.0资料(1).rar_免费高速下载|百度网盘-分享无限制</a></li>
+                        <li><a href="http://pan.baidu.com/s/1skbE209">2541蓝牙BT05资料V2.0.zip_免费高速下载|百度网盘-分享无限制</a></li>
+                    </ul>
+                </td>
+
+                <td></td>
+                <td>
+                    DX-BT05 is one of the clone model for HM-10.
+                    Most of the seller described as HM-10 clone, instead of "DX-BT05", some of them called it as "AT-05".
+                    The breakout version called "BT05" or "AT-09" is also available.
+                    The hardware is actually called <a href="http://www.bolutek.com/ProductController/findDetail.do?id=47">BOLUTEK BLE-CC41-A</a> from 深圳市博陆科电子科技有限公司/Shenzhen Bolutek Technology Co.,Ltd.
+                </td>
+            </tr>
+
+            <!-- DX-BT05-A -->
+            <tr>
+                <th>DX-BT05-A</th>
+                <td><img src="DX-BT05-A/appearance.jpg" /></td>
+                <td>$2.28-</td>
+
+                <td><a href="http://www.ti.com/product/cc2541">Texus Instruments CC2541</a></td>
+                <td>BLE(4.0)</td>
+                <td>SPP</td>
+                <td>Master/Slave (AT+ROLE)</td>
+
+                <td>same as HM-11</td>
+                <td>same as HM-11</td>
+                <td>same as HM-11</td>
+                <td>same as HM-11</td>
+                <td>same as HM-11</td>
+                <td>same as HM-11</td>
+
+                <td>Available</td>
+                <td>BT05-A</td>
+                <td><img src="DX-BT05-A/breakout.appearance.jpg" /><br />(from <a href="http://www.martyncurrey.com/bluetooth-modules/">Bluetooth Modules | Martyn Currey</a>)</td>
+                <td>see appearance</td>
+                <td>$3.04-</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>
+                    <ul>
+                        <li><a href="https://world.taobao.com/item/525541634432.htm">超小 BLE蓝牙4.0串口模块 cc2541 主从一体 iBeacon 微xin基站-淘宝网全球站</a></li>
+                        <li><a href="https://world.taobao.com/item/529019234299.htm">低功耗 BT05-A迷你版BLE蓝牙4.0串口模块 cc2541 透传iBeacon模块-淘宝网全球站</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="DX-BT05-A/BT05-A+MINI+4.0+蓝牙插针模块使用方法1/BT05-A MINI 4.0 清兩峨寞庁翠聞喘圭隈/痴低井4.0清兩 庁翠彿創/DX-BT05-A清兩 庁翠彿創/DX-BT05-A 4.0清兩庁翠室宝返過.pdf.pdf">Datasheet(CN)</a></li>
+                        <li><a href="DX-BT05-A/BT05-A+MINI+4.0+蓝牙插针模块使用方法1/BT05-A MINI 4.0 清兩峨寞庁翠聞喘圭隈/痴低井4.0清兩 庁翠彿創/DX-BT05-A清兩 庁翠彿創/DX-BT05-A 4.0清兩庁翠AT峺綜鹿v2.0.pdf.pdf">AT Command Reference(CN)</a></li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li><a href="http://pan.baidu.com/s/1slRMNIt">DX-BT05-A 蓝牙模块淘宝资料.zip_免费高速下载|百度网盘-分享无限制</a></li>
+                        <li><a href="http://pan.baidu.com/s/1qYj8l44">BT05-A MINI 4.0 蓝牙插针模块使用方法1.zip_免费高速下载|百度网盘-分享无限制</a></li>
+                    </ul>
+                </td>
+
+                <td></td>
+                <td>
+                    DX-BT05-A is a small model for DX-BT05; one of the clone model for HM-11. The breakout version BT05-A is also available.
+                    Actually the function is compatible with DX-BT05.
+                </td>
+            </tr>
+
+            <!-- BT12 -->
+            <tr>
+                <th>BT12</th>
+                <td>Appearance</td>
+                <td>Unit cost (USD)</td>
+
+                <td>Core device</td>
+                <td>Bluetooth version</td>
+                <td>Supported profile with the default firmware</td>
+                <td>Supported role</td>
+
+                <td>Vdd</td>
+                <td>MCU Flash size</td>
+                <td>Pinout</td>
+                <td>Schematic</td>
+                <td>Layout</td>
+                <td>Size(mm)</td>
+
+                <td>Breakout version</td>
+                <td>Name</td>
+                <td>Appearance</td>
+                <td>Pinout</td>
+                <td>Unit cost (USD)</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>Product page</td>
+                <td>Datasheet</td>
+                <td>Resources</td>
+
+                <td>Links</td>
+                <td>Note</td>
+            </tr>
+
+            <!-- BT13 -->
+            <tr>
+                <th>BT13</th>
+                <td>Appearance</td>
+                <td>Unit cost (USD)</td>
+
+                <td>Core device</td>
+                <td>Bluetooth version</td>
+                <td>Supported profile with the default firmware</td>
+                <td>Supported role</td>
+
+                <td>Vdd</td>
+                <td>MCU Flash size</td>
+                <td>Pinout</td>
+                <td>Schematic</td>
+                <td>Layout</td>
+                <td>Size(mm)</td>
+
+                <td>Breakout version</td>
+                <td>Name</td>
+                <td>Appearance</td>
+                <td>Pinout</td>
+                <td>Unit cost (USD)</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>Product page</td>
+                <td>Datasheet</td>
+                <td>Resources</td>
+
+                <td>Links</td>
+                <td>Note</td>
+            </tr>
+
+            <!-- DX-BT16 -->
+            <tr>
+                <th>DX-BT16</th>
+                <td>Appearance</td>
+                <td>Unit cost (USD)</td>
+
+                <td>Core device</td>
+                <td>Bluetooth version</td>
+                <td>Supported profile with the default firmware</td>
+                <td>Supported role</td>
+
+                <td>Vdd</td>
+                <td>MCU Flash size</td>
+                <td>Pinout</td>
+                <td>Schematic</td>
+                <td>Layout</td>
+                <td>Size(mm)</td>
+
+                <td>Breakout version</td>
+                <td>Name</td>
+                <td>Appearance</td>
+                <td>Pinout</td>
+                <td>Unit cost (USD)</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>Product page</td>
+                <td>Datasheet</td>
+                <td>Resources</td>
+
+                <td>Links</td>
+                <td>Note</td>
+            </tr>
+
+            <!-- SPP-C -->
+            <tr>
+                <th>SPP-C/SPP-CA</th>
+                <td>Appearance</td>
+                <td>Unit cost (USD)</td>
+
+                <td>Core device</td>
+                <td>Bluetooth version</td>
+                <td>Supported profile with the default firmware</td>
+                <td>Supported role</td>
+
+                <td>Vdd</td>
+                <td>MCU Flash size</td>
+                <td>Pinout</td>
+                <td>Schematic</td>
+                <td>Layout</td>
+                <td>Size(mm)</td>
+
+                <td>Breakout version</td>
+                <td>Name</td>
+                <td>Appearance</td>
+                <td>Pinout</td>
+                <td>Unit cost (USD)</td>
+
+                <td><a href="https://xintaiwei.taobao.com">深圳市信泰微科技有限公司</a></td>
+                <td>Product page</td>
+                <td>Datasheet</td>
+                <td>Resources</td>
+
+                <td>Links</td>
+                <td>Note</td>
             </tr>
 
             <!-- RN42 -->
@@ -707,7 +1079,7 @@
 
             <!-- HC-02 -->
             <tr>
-                <th>HC-02 (HC‐02蓝牙串口通信模块)</th>
+                <th>HC-02</th>
                 <td><img src="HC-02/appearance.jpg" /></td>
                 <td>$3.30-</td>
 
@@ -761,12 +1133,12 @@
                 <td>27 * 13 * 2</td>
 
                 <td>Available</td>
+                <td>fc-114, zs-040, JY-MCU, BT_BOARD V1.2pro, or another</td>
                 <td>
                     <img src="HC-05/breakout.appearance.jpg" /><br />
                     <img src="HC-05/fc-114.jpg" /><br />
                     <img src="HC-05/JY-MCU BT_BOARD V1.2pro.jpg" />
                 </td>
-                <td>fc-114, zs-040, JY-MCU, BT_BOARD V1.2pro, or another</td>
                 <td>see appearance</td>
                 <td>$2.85-, board only is $0.30-</td>
 
@@ -821,13 +1193,13 @@
                 <td>
                     Available
                 </td>
+                <td></td>
+                <td></td>
                 <td>
                     <img src="HC-06/HC-05_FC-114__HC-06_FC-114_001_1600.jpg" /><br />
                     (from <a href="http://www.martyncurrey.com/hc-05-fc-114-and-hc-06-fc-114-first-look/">HC-05 FC-114 and HC-06 FC-114. First Look | Martyn Currey</a>)
                     There are some difference between HC-05 and HC-06 breakout board.
                 </td>
-                <td></td>
-                <td></td>
                 <td></td>
 
                 <td><a href="http://www.wavesen.com/">Guangzhou HC Information Technology Co.,Ltd. / 广州汇承信息科技有限公司</a></td>
@@ -960,7 +1332,6 @@
                 </td>
             </tr>
 
-
             <!-- HC-09 -->
             <tr>
                 <th>HC-09</th>
@@ -996,276 +1367,10 @@
                     The core device is printed CC2582, or another is HL1009. I couldn't find any information for them.
                 </td>
             </tr>
-        </tbody>
-    </table>
-<div style="display: none;">
-            <!-- BT05-A -->
-            <tr>
-                <td>BT05-A</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>AT-09</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- BT-06 -->
-            <tr>
-                <td>BT-06</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- BT12 -->
-            <tr>
-                <td>BT12</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- BT13 -->
-            <tr>
-                <td>BT13</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- BC-04 -->
-            <tr>
-                <td>BC-04</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- AT-05 -->
-            <tr>
-                <td>AT-05</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>AT-09</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- SPP-C -->
-            <tr>
-                <td>SPP-C/SPP-CA</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
 
             <!-- LR24A-RX -->
             <tr>
                 <td>LR24A-RX</td>
-                <td>Appearance</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Core device</td>
-                <td>Bluetooth version</td>
-                <td>Supported profile with the default firmware</td>
-                <td>Supported role</td>
-
-                <td>Vdd</td>
-                <td>MCU Flash size</td>
-                <td>Pinout</td>
-                <td>Schematic</td>
-                <td>Layout</td>
-                <td>Size(mm)</td>
-
-                <td>Breakout version</td>
-                <td>Name</td>
-                <td>Appearance</td>
-                <td>Pinout</td>
-                <td>Unit cost (USD)</td>
-
-                <td>Manufacture</td>
-                <td>Product page</td>
-                <td>Datasheet</td>
-                <td>Resources</td>
-
-                <td>Links</td>
-                <td>Note</td>
-            </tr>
-
-            <!-- DX-BT16 4.2 -->
-            <tr>
-                <td>DX-BT16 4.2</td>
                 <td>Appearance</td>
                 <td>Unit cost (USD)</td>
 
